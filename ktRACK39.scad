@@ -30,14 +30,13 @@ difference()
     union()
     {
         translate([0, 0, 15]) rotate([-25, 0, 0]) base();
-        translate([-10/2, 0, 0]) cube([10, 56, 10]);
-        
-        translate([-10/2, 50, -10]) rotate([10, 0, 0]) cube([10, 10, 88]);
+        translate([0, 0, 0]) rotate([-90, 0, 0]) cylinder(r=14/2, h=54, $fn=100);
+        translate([0, 55, -10]) rotate([10, 0, 0]) cylinder(r=14/2, h=87, $fn=100);
     }
     #translate([-36, 85, th]) sp_unit();
     #translate([ 36, 85, th]) sp_unit();
     
-    #translate([-W/2, 4, 15+10]) rotate([-25, 0, 0]) cube([W, 10, 100]);
+    translate([-W/2, 4, 15+10]) rotate([-25, 0, 0]) cube([W, 10, 100]);
     
     translate([0, -15, 0]) sw_unit();
 
