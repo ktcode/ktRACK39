@@ -10,9 +10,20 @@ W = 118;
 D = 9.7;
 H = 181;
 
+BW = 66;
+BD = 100;
+BH = 4;
+TW = 41;
+TD = 76.5;
+TH = 4;
+HH = 74;
+
+
 
 dai();
-futa();
+ura3();
+
+
 
 module dai()
 {
@@ -20,52 +31,75 @@ difference()
 {
     union()
     {
-        translate([0, 0, 15]) rotate([-30, 0, 0]) base();
-        
-        translate([-W/2+10, 0, 0]) rotate([0, 0, 0])  cube([10, 70, 13]);
-        translate([-W/2+10, 65, 0]) rotate([0, 0, 0]) cube([10, 15,120]);
-        translate([W/2-10-10, 0, 0]) rotate([0, 0, 0]) cube([10, 70, 13]);
-        translate([W/2-30-10, 65, 0]) rotate([0, 0, 0]) cube([30, 15, 120]);
+        translate([0, 0, 15]) rotate([-25, 0, 0]) base();
+        translate([-W/2, 0, 0]) cube([W, 80, 4]);
+        translate([-36, 85, 0]) resize([66+th*2, 100+th*2, 4]) cylinder($fn=100);
+        translate([ 36, 85, 0]) resize([66+th*2, 100+th*2, 4]) cylinder($fn=100);
+        ura();
     }
-    translate([0, 0, 15]) rotate([-30, 0, 0]) unit();
+    translate([-36, 85, th]) sp_unit();
+    translate([ 36, 85, th]) sp_unit();
     
-    translate([W/2-30+12.5-10, 65-gap1, th]) rotate([0, 0, 0]) cube([5, 15-th, 120]);
-    translate([W/2-30+th-10, 65+10-th, th]) rotate([0, 0, 0]) cube([30-th*2, 5, 120]);
+    translate([0, 0, 0]) ura2();
+    translate([-4/2, 80-8, 25]) cube([4, 10, 80]);
 
     translate([-500/2, -500/2, -100]) cube([500, 500, 100]);
 }
 }
-
-
-module futa()
+module ura()
 {
 difference()
 {
     union()
     {
-        futa_waku();
+        translate([-W/2, 0, th]) cube([W, 80, 75]);
     }
-    translate([0, th, -gap1]) scale([0.95, 0.95, 0.95]) futa_waku();
-    
-    translate([W/2-30+12.5-10, 65-gap1-10, 0]) rotate([0, 0, 0]) cube([5, 15-th, 30-th]);
-    
-    translate([W/2-30+12.5-10-19.5, 65-gap1+10, 0]) rotate([0, 0, 0]) cube([5, 15-th, 10]);
-    translate([-W/2+10+10+2, 65-gap1+10, 0]) rotate([0, 0, 0]) cube([5, 15-th, 10]);
-    translate([-12, 65-gap1+10, 0]) rotate([0, 0, 0]) cube([5, 15-th, 10]);
+    translate([-W/2-gap1, -50, 0]) rotate([-25, 0, 0]) cube([W+gap2, 50, 200]);
+    translate([-36-1, 85, th]) scale([1.1, 1.05, 1.05]) sp_unit();
+    translate([ 36+1, 85, th]) scale([1.1, 1.05, 1.05]) sp_unit();
+    translate([-W/2-5, 50-5, 0]) rotate([25, -20, 180]) cube([W, 50, 200]);
+    translate([ W/2+5, -5, 0]) rotate([-25, -20, 0]) cube([W, 50, 200]);
 }
 }
-module futa_waku()
+module ura2()
 {
 difference()
 {
     union()
     {
-        translate([-(W-10*2-10*2-1)/2, 10, 0]) cube([W-10*2-10*2-1, 70, 30]);
+        translate([-(W-th*2)/2, 0, th]) cube([W-th*2, 80-th, 75]);
     }
-    translate([-W/2, -(D+th*2), D/2-25+15]) rotate([-30, 0, 0]) cube([W, D+th*2, H]);
-    translate([W/2-30-10-0.5, 65-0.5, 0]) rotate([0, 0, 0]) cube([30, 15+1, 120]);
+    translate([-W/2-gap1, -50+th, 0]) rotate([-25, 0, 0]) cube([W+gap2, 50, 200]);
+    translate([-36-1, 85, th]) scale([1.1+0.05, 1.05+0.05, 1.05]) sp_unit();
+    translate([ 36+1, 85, th]) scale([1.1+0.05, 1.05+0.05, 1.05]) sp_unit();
+    translate([-W/2-5+th, 50-5, 0]) rotate([25, -20, 180]) cube([W, 50, 200]);
+    translate([ W/2+5-th, -5, 0]) rotate([-25, -20, 0]) cube([W, 50, 200]);
 }
 }
+module ura3()
+{
+translate([0, 0, th])
+difference()
+{
+    union()
+    {
+        translate([-W/2, 0, th]) cube([W, 80, 75]);
+    }
+    translate([-W/2-gap1, -50, 0-th]) rotate([-25, 0, 0]) cube([W+gap2, 50, 200]);
+    translate([-36-1, 85, th]) scale([1.1, 1.05, 1.05]) sp_unit();
+    translate([ 36+1, 85, th]) scale([1.1, 1.05, 1.05]) sp_unit();
+    translate([-W/2-5, 50-5, 0]) rotate([25, -20, 180]) cube([W, 50, 200]);
+    translate([ W/2+5, -5, 0]) rotate([-25, -20, 0]) cube([W, 50, 200]);
+    
+    translate([0, 60, 75+th-5+1]) cube([40, 5, 5]);
+
+    translate([-500/2, -500/2, -100+75]) cube([500, 500, 100]);
+}
+translate([-40/2, 44, 75+th-5]) cube([40, 5, 5]);
+translate([-20/2, 80-5-2.5, 75+th-5]) cube([20, 5, 5]);
+}
+
+
 
  
 module base()
@@ -80,7 +114,16 @@ difference()
     unit();
 }
 }
- 
+
+module sp_unit()
+{
+    hull()
+    {
+        translate([0, 0, HH-TH]) resize([TW, TD, TH]) cylinder($fn=100);
+        translate([0, 0, 0]) resize([BW, BD, BH]) cylinder($fn=100);
+    }
+}
+
 module unit()
 {
     translate([-(W-D)/2, 0, D/2]) cube([W-D, D, H-D]);
